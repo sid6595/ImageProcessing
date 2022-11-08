@@ -12,7 +12,7 @@ import enumpackage.Orientation;
  * This class represents an image and contains all the methods to modify that image.
  */
 public class Picture {
-  private Pixel[][] picture;
+  private final Pixel[][] picture;
   private final int width;
   private final int height;
   //TODO What is max used for?
@@ -127,11 +127,9 @@ public class Picture {
       for (int j = 0; j < width; j++) {
         if (o.equals(Orientation.Vertical)) {
           result[i][j] = applied.picture[height - i - 1][j];
-        }
-        else if (o.equals(Orientation.Horizontal)) {
+        } else if (o.equals(Orientation.Horizontal)) {
           result[i][j] = applied.picture[i][width - j - 1];
-        }
-        else {
+        } else {
           throw new IllegalArgumentException("Something wrong with orientation.");
         }
       }
@@ -188,5 +186,27 @@ public class Picture {
             + Integer.toString(this.maxValue).hashCode();
     return rest + result;
   }
+
+  public void blur() {
+    double[][] blur = {
+            {1 / 16, 1 / 8, 1 / 16},
+            {1 / 8, 1 / 4, 1 / 8},
+            {1 / 16, 1 / 8, 1 / 16}
+    };
+
+    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue);
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        //this grabs the individual picture pixel
+      }
+    }
+
+    //check if null
+    //traverse through 2d array and image
+    //multiply both
+    //make sure range is < 255
+
+  }
+
 
 }
