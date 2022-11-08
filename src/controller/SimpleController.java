@@ -36,7 +36,6 @@ public class SimpleController {
    * @param r where the user inputs are handled
    */
   // TODO make tests for controller
-  // test
   // bmp, jpg and png
   public SimpleController(ImageProcessorModel m, ImageTextView v, Readable r) {
     if (m == null || r == null || v == null) {
