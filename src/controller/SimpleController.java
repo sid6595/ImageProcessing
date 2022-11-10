@@ -22,6 +22,7 @@ import controller.commands.VisIntensity;
 import model.ImageProcessorModel;
 import model.ModelImpl;
 import view.ImageTextView;
+import view.TextViewInterface;
 
 /**
  * This class is the controller where all the commands are stored and where everything
@@ -29,7 +30,7 @@ import view.ImageTextView;
  */
 public class SimpleController {
   ImageProcessorModel model;
-  ImageTextView view;
+  TextViewInterface view;
   private final Readable rd;
 
   /**
@@ -40,7 +41,7 @@ public class SimpleController {
    */
   // TODO make tests for controller
   // bmp, jpg and png
-  public SimpleController(ImageProcessorModel m, ImageTextView v, Readable r) {
+  public SimpleController(ImageProcessorModel m, TextViewInterface v, Readable r) {
     if (m == null || r == null || v == null) {
       throw new IllegalArgumentException("An argument in the controller is null.");
     }
@@ -96,7 +97,7 @@ public class SimpleController {
       }
       Function<Scanner, FunctionObjects> cmd = knownCommands.getOrDefault(in, null);
       if (cmd == null) {
-        throw new IllegalArgumentException(cmd + " is null");
+        throw new IllegalArgumentException("Valid command not given");
       } else {
         c = cmd.apply(scan);
         String input = scan.next();
