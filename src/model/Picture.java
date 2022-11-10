@@ -187,7 +187,17 @@ public class Picture {
     return rest + result;
   }
 
-  public void blur() {
+  /**
+   * This will blur the image it is applied to by applying the kernel to the rgb values
+   * of the pixels.
+   * @return This will return the blurred image.
+   */
+  public Picture blur() {
+
+    int newR;
+    int newG;
+    int newB;
+
     double[][] blur = {
             {1 / 16, 1 / 8, 1 / 16},
             {1 / 8, 1 / 4, 1 / 8},
@@ -195,11 +205,21 @@ public class Picture {
     };
 
     Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue);
-    for (int i = 0; i < height; i++) {
-      for (int j = 0; j < width; j++) {
+    for (int i = 0; i < applied.height; i++) {
+      for (int j = 0; j < applied.width; j++) {
         //this grabs the individual picture pixel
+        newR = (int) (applied.picture[i][j].getR() * blur[0][0] + applied.picture[i][j].getG()
+                * blur[0][1] + applied.picture[i][j].getB() * blur[0][2]);
+        newG = (int) (applied.picture[i][j].getR() * blur[1][0] + applied.picture[i][j].getG()
+                * blur[1][1] + applied.picture[i][j].getB() * blur[2][2]);
+        newB = (int) (applied.picture[i][j].getR() * blur[2][0] + applied.picture[i][j].getG()
+                * blur[2][1] + applied.picture[i][j].getB() * blur[2][2]);
+
+        applied.picture[i][j] = new Pixel(newR, newG, newB);
       }
     }
+
+    return new Picture(applied.picture, this.width, this.height, this.maxValue);
 
     //check if null
     //traverse through 2d array and image
