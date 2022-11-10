@@ -7,6 +7,9 @@ import java.util.Scanner;
 import java.util.Stack;
 import java.util.function.Function;
 
+import controller.commands.Blur;
+import controller.commands.Greyscaling;
+import controller.commands.SepiaTone;
 import enumpackage.Brightness;
 import enumpackage.Component;
 import enumpackage.Orientation;
@@ -74,6 +77,9 @@ public class SimpleController {
     knownCommands.put("red-component", (Scanner s) -> new VisRGB(Component.Red));
     knownCommands.put("green-component", (Scanner s) -> new VisRGB(Component.Green));
     knownCommands.put("blue-component", (Scanner s) -> new VisRGB(Component.Blue));
+    knownCommands.put("blur", (Scanner s) -> new Blur());
+    knownCommands.put("greyscale", (Scanner s) -> new Greyscaling());
+    knownCommands.put("sepia", (Scanner s) -> new SepiaTone());
     knownCommands.put("save", (Scanner s) -> new Save());
     knownCommands.put("load", (Scanner s) -> new Load());
 

@@ -47,8 +47,8 @@ public class Save implements FunctionObjects {
     try {
       // retrieve image
       BufferedImage bi = m.getPicture(imageName).toBufferedImage();
-      String format = m.getPicture("res/" + imageName).getFormat();
-      File outputFile = new File(saveLocation);
+      String format = m.getPicture(imageName).getFormat();
+      File outputFile = new File("res/" + saveLocation);
       ImageIO.write(bi, format, outputFile);
     } catch (IOException e) {
       throw new IllegalArgumentException("Failed save");

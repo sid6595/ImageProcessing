@@ -23,15 +23,33 @@ public class Pixel {
    * @param blue  The value of blue color.
    */
   public Pixel(int red, int green, int blue) {
-    if (!(red <= 255 || red >= 0 || green >= 0 || green <= 255 || blue >= 0 || blue <= 255)) {
-      throw new IllegalArgumentException("One of the RGB values is invalid");
-    }
     this.r = red;
     this.g = green;
     this.b = blue;
+
+    if (red < 0) {
+      this.r = 0;
+    }
+    if (red > 255) {
+      this.r = 255;
+    }
+    if (green < 0) {
+      this.g = 0;
+    }
+    if (green > 255) {
+      this.g = 255;
+    }
+    if (blue < 0) {
+      this.b = 0;
+    }
+    if (blue > 255) {
+      this.b = 255;
+    }
+
   }
 
   public int toRGB() {
+//    System.out.println("Red: " + this.r + "; green: " + this.g + "; blue: " + this.b);
     Color color = new Color(this.r, this.g, this.b);
     return color.getRGB();
   }
