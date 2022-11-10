@@ -228,7 +228,7 @@ public class Picture {
     };
  */
 
-    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue);
+    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue, this.format, this.type);
     for (int i = 0; i < applied.height; i++) {
       for (int j = 0; j < applied.width; j++) {
         //this grabs the individual picture pixel
@@ -243,7 +243,7 @@ public class Picture {
       }
     }
 
-    return new Picture(applied.picture, this.width, this.height, this.maxValue);
+    return new Picture(applied.picture, this.width, this.height, this.maxValue, this.format, this.type);
   }
 
   public Picture filter(double[][] kernel) {
@@ -251,7 +251,7 @@ public class Picture {
     int newG;
     int newB;
 
-    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue);
+    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue, this.format, this.type);
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
         for (int a = 0; a < kernel.length; a++) {
@@ -264,6 +264,7 @@ public class Picture {
         }
       }
     }
+    return applied;
 
   }
 
