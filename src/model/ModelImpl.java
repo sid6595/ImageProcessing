@@ -1,10 +1,15 @@
 package model;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+
+import javax.imageio.ImageIO;
 
 /**
  * This class is where the loaded images are store and where the new images will be stored.
@@ -48,53 +53,36 @@ public class ModelImpl implements ImageProcessorModel {
    * @param path      This argument is the source path of the image.
    * @param imageName This argument is the name of the image.
    */
-  @Override
   public void loadImage(String path, String imageName) {
-    Scanner sc;
-
+    BufferedImage img = null;
     try {
-      sc = new Scanner(new FileInputStream("res/" + path));
-    } catch (FileNotFoundException e) {
-      System.out.println("File " + path + " not found!");
-      return;
-    }
-    StringBuilder builder = new StringBuilder();
-    //read the file line by line, and populate a string. This will throw away any comment lines
-    while (sc.hasNextLine()) {
-      String s = sc.nextLine();
-      if (s.charAt(0) != '#') {
-        builder.append(s + System.lineSeparator());
-      }
+      img = ImageIO.read(new File(path));
+    } catch (IOException e) {
+      System.out.println("File " + path + " not found");
     }
 
-    //now set up the scanner to read from the string we just built
-    sc = new Scanner(builder.toString());
+    int height = img.getHeight();
+    int width = img.getWidth();
+    int maxValue = 255;
 
-    String token;
-
-    token = sc.next();
-    if (!token.equals("P3")) {
-      System.out.println("Invalid PPM file: plain RAW file should begin with P3");
-    }
-    int width = sc.nextInt();
-    int height = sc.nextInt();
-    int maxValue = sc.nextInt();
 
     Pixel[][] allPixels = new Pixel[height][width];
 
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
-        int r = sc.nextInt();
-        int g = sc.nextInt();
-        int b = sc.nextInt();
-        allPixels[i][j] = new Pixel(r, g, b);
+        int color = img.getRGB(j, i);
+        int blue = color & 0xff;
+        int green = (color & 0xff00) >> 8;
+        int red = (color & 0xff0000) >> 16;
+        allPixels[i][j] = new Pixel(red, green, blue);
       }
     }
+
     if (imageName.length() == 0) {
       throw new IllegalArgumentException("No image name given");
     }
     catalog.put(imageName, new Picture(allPixels, width, height, maxValue));
-
   }
+
 }
 

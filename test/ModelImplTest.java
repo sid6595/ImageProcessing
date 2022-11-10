@@ -39,6 +39,14 @@ public class ModelImplTest {
     m1.addPicture(p1, "testPic");
   }
 
+//  @Test
+//  public void testLoadjpg() {
+//    ModelImpl m1 = new ModelImpl();
+//    m1.loadDifferentImage("jpgsample.jpg", "Sample");
+//
+//
+//  }
+
   @Test
   public void testBrightenFunc() {
     init();
@@ -85,7 +93,7 @@ public class ModelImplTest {
   }
 
   @Test
-  public void testLoad3x3() {
+  public void testLoadPPM3x3() {
     m1 = new ModelImpl();
     m1.loadImage("3x3checker.ppm", "3x3");
     String expected = "P3\n" +
