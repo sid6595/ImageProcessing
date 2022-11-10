@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.image.BufferedImage;
 import java.util.Objects;
 
 import enumpackage.Brightness;
@@ -17,6 +18,8 @@ public class Picture {
   private final int height;
   //TODO What is max used for?
   private final int maxValue;
+  private final String format;
+  private final int type;
 
   /**
    * This constructor takes in the picture as well as its width, height and max value.
@@ -26,15 +29,20 @@ public class Picture {
    * @param height   This argument is the height of the image.
    * @param maxValue This argument is the maximum rgb value that the image can have.
    */
-  public Picture(Pixel[][] p, int width, int height, int maxValue) {
+  public Picture(Pixel[][] p, int width, int height, int maxValue, String format, int type) {
     if (width < 0 || height < 0 || maxValue < 0) {
       throw new IllegalArgumentException("Value less than zero given.");
+    }
+    if (format == null) {
+      throw new IllegalArgumentException("No format given");
     }
     // i -> width   ||    j -> height
     this.picture = Objects.requireNonNull(p);
     this.width = width;
     this.height = height;
     this.maxValue = maxValue;
+    this.format = format;
+    this.type = type;
   }
 
   /**
@@ -52,6 +60,10 @@ public class Picture {
     return copy;
   }
 
+  public String getFormat() {
+    return this.format;
+  }
+
   /**
    * This method visualizes the individual rgp components.
    *
@@ -59,7 +71,7 @@ public class Picture {
    * @return This method returns an image.
    */
   public Picture visRGB(Component c) {
-    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue);
+    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue, this.format, this.type);
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
         applied.picture[i][j].greyscaleColor(c);
@@ -76,7 +88,7 @@ public class Picture {
    * @return This method returns an image.
    */
   public Picture visIntensity(Brightness b) {
-    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue);
+    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue, this.format, this.type);
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
         applied.picture[i][j].greyscaleBrightness(b);
@@ -113,6 +125,16 @@ public class Picture {
     return builder.toString();
   }
 
+  public BufferedImage toBufferedImage()  {
+    BufferedImage formal = new BufferedImage(this.width, this.height, this.type);
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        formal.setRGB(j, i, picture[i][j].toRGB());
+      }
+    }
+    return formal;
+  }
+
   /**
    * This method flips the supplied picture whichever way is orientation dictates.
    *
@@ -120,7 +142,7 @@ public class Picture {
    * @return This method returns a picture after it has been flipped.
    */
   public Picture flip(Orientation o) {
-    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue);
+    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue, this.format, this.type);
 
     Pixel[][] result = new Pixel[height][width];
     for (int i = 0; i < height; i++) {
@@ -134,7 +156,7 @@ public class Picture {
         }
       }
     }
-    return new Picture(result, this.width, this.height, this.maxValue);
+    return new Picture(result, this.width, this.height, this.maxValue, this.format, this.type);
   }
 
   /**
@@ -144,7 +166,7 @@ public class Picture {
    * @return This method returns an image that has been brightened.
    */
   public Picture brighten(int increment) {
-    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue);
+    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue, this.format, this.type);
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
         applied.picture[i][j].brighten(increment, maxValue);

@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.awt.image.BufferedImage;
+
 import enumpackage.Brightness;
 import enumpackage.Component;
 import enumpackage.Orientation;
@@ -34,10 +36,24 @@ public class ModelImplTest {
     pixelArray[0][1] = bottomLeft;
     pixelArray[1][1] = bottomRight;
 
-    p1 = new Picture(pixelArray, 2,2,255);
+    p1 = new Picture(pixelArray, 2,2,255, "ppm", BufferedImage.TYPE_INT_ARGB);
     m1 = new ModelImpl();
     m1.addPicture(p1, "testPic");
   }
+
+  @Test
+  public void testLoadjpg() {
+    ModelImpl m1 = new ModelImpl();
+    m1.loadImage("jpgsample.jpg", "Sample");
+
+
+  }
+
+//  @Test
+//  public void testGetExtension() {
+//    ModelImpl m1 = new ModelImpl();
+//    assertEquals("ppm", m1.getExtension("Sample.ppm"));
+//  }
 
   @Test
   public void testBrightenFunc() {
@@ -85,7 +101,7 @@ public class ModelImplTest {
   }
 
   @Test
-  public void testLoad3x3() {
+  public void testLoadPPM3x3() {
     m1 = new ModelImpl();
     m1.loadImage("3x3checker.ppm", "3x3");
     String expected = "P3\n" +

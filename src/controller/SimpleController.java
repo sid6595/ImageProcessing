@@ -36,7 +36,6 @@ public class SimpleController {
    * @param r where the user inputs are handled
    */
   // TODO make tests for controller
-  // test
   // bmp, jpg and png
   public SimpleController(ImageProcessorModel m, ImageTextView v, Readable r) {
     if (m == null || r == null || v == null) {
@@ -91,7 +90,7 @@ public class SimpleController {
       }
       Function<Scanner, FunctionObjects> cmd = knownCommands.getOrDefault(in, null);
       if (cmd == null) {
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(cmd + " is null");
       } else {
         c = cmd.apply(scan);
         String input = scan.next();

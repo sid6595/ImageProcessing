@@ -1,8 +1,13 @@
 package controller.commands;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 //import java.io.IOException;
 //import java.util.Objects;
+
+import javax.imageio.ImageIO;
 
 import controller.FunctionObjects;
 import model.ImageProcessorModel;
@@ -28,15 +33,25 @@ public class Save implements FunctionObjects {
    */
   public void apply(ImageProcessorModel m, String saveLocation, String imageName) {
     FileWriter fw;
-
-    String content = m.getPicture(imageName).toPPM();
+//
+//    String content = m.getPicture(imageName).toPPM();
+//
+//    try {
+//      fw = new FileWriter("res/" + saveLocation);
+//      fw.write(content);
+//      fw.close();
+//    } catch (Exception e) {
+//      throw new IllegalArgumentException("Something occurred when making fileWriter.");
+//    }
 
     try {
-      fw = new FileWriter("res/" + saveLocation);
-      fw.write(content);
-      fw.close();
-    } catch (Exception e) {
-      throw new IllegalArgumentException("Something occurred when making fileWriter.");
+      // retrieve image
+      BufferedImage bi = m.getPicture(imageName).toBufferedImage();
+      String format = m.getPicture("res/" + imageName).getFormat();
+      File outputFile = new File(saveLocation);
+      ImageIO.write(bi, format, outputFile);
+    } catch (IOException e) {
+      throw new IllegalArgumentException("Failed save");
     }
 
 
