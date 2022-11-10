@@ -5,7 +5,7 @@ import java.io.IOException;
 import model.ImageProcessorModel;
 
 /**
- * This is the Marble Solitaire Text view.
+ * This is the Image Processor Text view.
  */
 public class ImageTextView implements TextViewInterface {
   private final ImageProcessorModel imageprocessor;

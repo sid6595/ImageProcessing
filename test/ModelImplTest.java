@@ -34,17 +34,23 @@ public class ModelImplTest {
     pixelArray[0][1] = bottomLeft;
     pixelArray[1][1] = bottomRight;
 
-    p1 = new Picture(pixelArray, 2,2,255);
+    p1 = new Picture(pixelArray, 2,2,255, "ppm");
     m1 = new ModelImpl();
     m1.addPicture(p1, "testPic");
   }
 
+  @Test
+  public void testLoadjpg() {
+    ModelImpl m1 = new ModelImpl();
+    m1.loadImage("jpgsample.jpg", "Sample");
+
+
+  }
+
 //  @Test
-//  public void testLoadjpg() {
+//  public void testGetExtension() {
 //    ModelImpl m1 = new ModelImpl();
-//    m1.loadDifferentImage("jpgsample.jpg", "Sample");
-//
-//
+//    assertEquals("ppm", m1.getExtension("Sample.ppm"));
 //  }
 
   @Test

@@ -10,7 +10,7 @@ import model.Pixel;
 import static org.junit.Assert.assertEquals;
 
 /**
- * This is the tester for the pixels methods.
+ * This is the tester for the pixels methods and tests all the methods within.
  */
 public class PixelTest {
 
@@ -27,6 +27,12 @@ public class PixelTest {
   public void testValue() {
     init();
     assertEquals(30, p.value());
+  }
+
+  @Test
+  public void testToRGB() {
+    init();
+    assertEquals(-16116706, p.toRGB());
   }
 
   @Test

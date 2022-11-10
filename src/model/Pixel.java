@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.*;
+
 import enumpackage.Brightness;
 import enumpackage.Component;
 
@@ -27,6 +29,11 @@ public class Pixel {
     this.r = red;
     this.g = green;
     this.b = blue;
+  }
+
+  public int toRGB() {
+    Color color = new Color(this.r, this.g, this.b);
+    return color.getRGB();
   }
 
   /**
