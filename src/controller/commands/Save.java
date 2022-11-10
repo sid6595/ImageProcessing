@@ -32,7 +32,7 @@ public class Save implements FunctionObjects {
    * @param imageName    This is the name of the image being saved.
    */
   public void apply(ImageProcessorModel m, String saveLocation, String imageName) {
-//    FileWriter fw;
+    FileWriter fw;
 //
 //    String content = m.getPicture(imageName).toPPM();
 //
@@ -47,8 +47,8 @@ public class Save implements FunctionObjects {
     try {
       // retrieve image
       BufferedImage bi = m.getPicture(imageName).toBufferedImage();
-      String format = m.getPicture(imageName).getFormat();
-      File outputFile = new File("res/" + saveLocation);
+      String format = m.getPicture("res/" + imageName).getFormat();
+      File outputFile = new File(saveLocation);
       ImageIO.write(bi, format, outputFile);
     } catch (IOException e) {
       throw new IllegalArgumentException("Failed save");

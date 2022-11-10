@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.awt.image.BufferedImage;
+
 import enumpackage.Brightness;
 import enumpackage.Component;
 import enumpackage.Orientation;
@@ -41,7 +43,7 @@ public class PictureTest {
     pixelArray[2][0] = bottomLeft;
     pixelArray[2][1] = bottomRight;
 
-    p1 = new Picture(pixelArray, 2, 3, 255, "ppm");
+    p1 = new Picture(pixelArray, 2, 3, 255, "ppm", BufferedImage.TYPE_INT_ARGB);
 
   }
 
@@ -75,7 +77,7 @@ public class PictureTest {
     expectedPixelArray[2][0] = expectedBottomLeft;
     expectedPixelArray[2][1] = expectedBottomRight;
 
-    Picture expectedPic = new Picture(expectedPixelArray, 2, 3, 255, "ppm");
+    Picture expectedPic = new Picture(expectedPixelArray, 2, 3, 255, "ppm", BufferedImage.TYPE_INT_ARGB);
 
     assertEquals(expectedPic, p1.visIntensity(Brightness.Intensity));
     assertNotEquals(expectedPic, p1);
@@ -102,7 +104,7 @@ public class PictureTest {
     expectedPixelArray[2][0] = expectedBottomLeft;
     expectedPixelArray[2][1] = expectedBottomRight;
 
-    Picture expectedPic = new Picture(expectedPixelArray, 2, 3, 255, "ppm");
+    Picture expectedPic = new Picture(expectedPixelArray, 2, 3, 255, "ppm", BufferedImage.TYPE_INT_ARGB);
 
     assertEquals(expectedPic, p1.visRGB(Component.Red));
     assertNotEquals(expectedPic, p1);
@@ -160,7 +162,7 @@ public class PictureTest {
     expectedPixelArray[2][0] = expectedBottomLeft;
     expectedPixelArray[2][1] = expectedBottomRight;
 
-    Picture expectedPic = new Picture(expectedPixelArray, 2, 3, 255, "ppm");
+    Picture expectedPic = new Picture(expectedPixelArray, 2, 3, 255, "ppm", BufferedImage.TYPE_INT_ARGB);
 
     assertEquals(expectedPic, p1.flip(Orientation.Vertical));
     assertNotEquals(expectedPic.toPPM(), p1.toPPM());
@@ -186,7 +188,7 @@ public class PictureTest {
     expectedPixelArray[2][0] = expectedBottomLeft;
     expectedPixelArray[2][1] = expectedBottomRight;
 
-    Picture expectedPic = new Picture(expectedPixelArray, 2, 3, 255, "ppm");
+    Picture expectedPic = new Picture(expectedPixelArray, 2, 3, 255, "ppm", BufferedImage.TYPE_INT_ARGB);
 
     assertEquals(expectedPic, p1.flip(Orientation.Horizontal));
     assertNotEquals(expectedPic.toPPM(), p1.toPPM());
@@ -212,7 +214,7 @@ public class PictureTest {
     expectedPixelArray[2][0] = expectedBottomLeft;
     expectedPixelArray[2][1] = expectedBottomRight;
 
-    Picture expectedPic = new Picture(expectedPixelArray, 2, 3, 255, "ppm");
+    Picture expectedPic = new Picture(expectedPixelArray, 2, 3, 255, "ppm", BufferedImage.TYPE_INT_ARGB);
 
     assertEquals(expectedPic, p1.brighten(50));
     assertNotEquals(expectedPic, p1);

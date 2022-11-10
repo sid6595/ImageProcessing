@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.awt.image.BufferedImage;
+
 import enumpackage.Brightness;
 import enumpackage.Component;
 import enumpackage.Orientation;
@@ -34,7 +36,7 @@ public class ModelImplTest {
     pixelArray[0][1] = bottomLeft;
     pixelArray[1][1] = bottomRight;
 
-    p1 = new Picture(pixelArray, 2,2,255, "ppm");
+    p1 = new Picture(pixelArray, 2,2,255, "ppm", BufferedImage.TYPE_INT_ARGB);
     m1 = new ModelImpl();
     m1.addPicture(p1, "testPic");
   }

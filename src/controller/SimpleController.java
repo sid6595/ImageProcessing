@@ -90,7 +90,7 @@ public class SimpleController {
       }
       Function<Scanner, FunctionObjects> cmd = knownCommands.getOrDefault(in, null);
       if (cmd == null) {
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(cmd + " is null");
       } else {
         c = cmd.apply(scan);
         String input = scan.next();

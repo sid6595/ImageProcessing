@@ -59,42 +59,16 @@ public class ModelImpl implements ImageProcessorModel {
   public void loadImage(String path, String imageName) {
     BufferedImage img = null;
     try {
-      img = ImageIO.read(new File(path));
+      img = ImageIO.read(new File("res/" + path));
     } catch (IOException e) {
       System.out.println("File " + path + " not found");
     }
-
-    System.out.println(img.toString());
 
     int height = img.getHeight();
     int width = img.getWidth();
     int maxValue = 255;
 
-//    ImageInputStream iis;
-//    try {
-//      iis = ImageIO.createImageInputStream(path);
-//    } catch (IOException e) {
-//      throw new IllegalArgumentException("Can't get input stream");
-//    }
-//
-//    ImageReader reader;
-//    try {
-//      Iterator<ImageReader> iter = ImageIO.getImageReaders(iis);
-//      reader = iter.next();
-//    } catch(IllegalArgumentException a) {
-//      throw new IllegalArgumentException("Can't get image reader");
-//    }
-//
-//
-//    String format;
-//    try {
-//      format = reader.getFormatName();
-//    } catch (IOException e) {
-//      throw new IllegalArgumentException("Can't get format name");
-//    }
-
     String format = getExtension(path);
-
 
     Pixel[][] allPixels = new Pixel[height][width];
 
@@ -111,7 +85,9 @@ public class ModelImpl implements ImageProcessorModel {
     if (imageName.length() == 0) {
       throw new IllegalArgumentException("No image name given");
     }
-    catalog.put(imageName, new Picture(allPixels, width, height, maxValue, format));
+    int type = img.getType();
+
+    catalog.put(imageName, new Picture(allPixels, width, height, maxValue, format, type));
   }
 
   private String getExtension(String path) {
