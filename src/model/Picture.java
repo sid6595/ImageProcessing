@@ -232,13 +232,13 @@ public class Picture {
     int newR;
     int newG;
     int newB;
-  /*
-      double[][] blur = {
-              {1 / 16, 1 / 8, 1 / 16},
-              {1 / 8, 1 / 4, 1 / 8},
-              {1 / 16, 1 / 8, 1 / 16}
-      };
-   */
+    /*
+        double[][] blur = {
+                {1 / 16, 1 / 8, 1 / 16},
+                {1 / 8, 1 / 4, 1 / 8},
+                {1 / 16, 1 / 8, 1 / 16}
+        };
+    */
 
     Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue,
             this.format, this.type);
