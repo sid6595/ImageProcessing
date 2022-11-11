@@ -15,6 +15,10 @@ public class SepiaTone implements FunctionObjects {
           {0.272, 0.534, 0.131}
   };
 
+  /**
+   * Apply takes in the supplied image and applies sepia, then returns the
+   * new image.
+   */
   @Override
   public void apply(ImageProcessorModel m, String oldName, String newName) {
     Picture oldImage = m.getPicture(oldName);

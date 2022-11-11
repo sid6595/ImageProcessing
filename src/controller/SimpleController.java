@@ -10,6 +10,7 @@ import java.util.function.Function;
 import controller.commands.Blur;
 import controller.commands.Greyscaling;
 import controller.commands.SepiaTone;
+import controller.commands.Sharpen;
 import enumpackage.Brightness;
 import enumpackage.Component;
 import enumpackage.Orientation;
@@ -78,6 +79,7 @@ public class SimpleController {
     knownCommands.put("blur", (Scanner s) -> new Blur());
     knownCommands.put("greyscale", (Scanner s) -> new Greyscaling());
     knownCommands.put("sepia", (Scanner s) -> new SepiaTone());
+    knownCommands.put("sharpen", (Scanner s) -> new Sharpen());
     knownCommands.put("save", (Scanner s) -> new Save());
     knownCommands.put("load", (Scanner s) -> new Load());
 
