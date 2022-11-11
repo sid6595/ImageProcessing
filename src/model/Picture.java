@@ -71,7 +71,8 @@ public class Picture {
    * @return This method returns an image.
    */
   public Picture visRGB(Component c) {
-    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue, this.format, this.type);
+    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue,
+            this.format, this.type);
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
         applied.picture[i][j].greyscaleColor(c);
@@ -81,14 +82,14 @@ public class Picture {
   }
 
   /**
-   * This class will create a new image based on the visuals of each individual
-   * intensity value.
+   * This class will create a new image based on the visuals of each individual intensity value.
    *
    * @param b This argument is the brightness of the image.
    * @return This method returns an image.
    */
   public Picture visIntensity(Brightness b) {
-    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue, this.format, this.type);
+    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue,
+            this.format, this.type);
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
         applied.picture[i][j].greyscaleBrightness(b);
@@ -127,9 +128,10 @@ public class Picture {
 
   /**
    * This method converts the picture into a bufferedImage.
+   *
    * @return the mentioned bufferredimage.
    */
-  public BufferedImage toBufferedImage()  {
+  public BufferedImage toBufferedImage() {
     BufferedImage formal = new BufferedImage(this.width, this.height, this.type);
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
@@ -146,7 +148,8 @@ public class Picture {
    * @return This method returns a picture after it has been flipped.
    */
   public Picture flip(Orientation o) {
-    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue, this.format, this.type);
+    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue,
+            this.format, this.type);
 
     Pixel[][] result = new Pixel[height][width];
     for (int i = 0; i < height; i++) {
@@ -170,7 +173,8 @@ public class Picture {
    * @return This method returns an image that has been brightened.
    */
   public Picture brighten(int increment) {
-    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue, this.format, this.type);
+    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue,
+            this.format, this.type);
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
         applied.picture[i][j].brighten(increment, maxValue);
@@ -214,8 +218,8 @@ public class Picture {
   }
 
   /**
-   * This will transform the image it is applied to by applying the kernel to the rgb values
-   * of the pixels.
+   * This will transform the image it is applied to by applying the kernel to the rgb values of the
+   * pixels.
    *
    * @return This will return the blurred image.
    */
@@ -224,15 +228,16 @@ public class Picture {
     int newR;
     int newG;
     int newB;
-/*
+    /*
     double[][] blur = {
             {1 / 16, 1 / 8, 1 / 16},
             {1 / 8, 1 / 4, 1 / 8},
             {1 / 16, 1 / 8, 1 / 16}
     };
- */
+    */
 
-    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue, this.format, this.type);
+    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue,
+            this.format, this.type);
     for (int i = 0; i < applied.height; i++) {
       for (int j = 0; j < applied.width; j++) {
         //this grabs the individual picture pixel
@@ -247,11 +252,13 @@ public class Picture {
       }
     }
 
-    return new Picture(applied.picture, this.width, this.height, this.maxValue, this.format, this.type);
+    return new Picture(applied.picture, this.width, this.height, this.maxValue, this.format,
+            this.type);
   }
 
   /**
    * This filters the picture with the supplied kernel.
+   *
    * @param kernel a 2d array used to add a filter onto an image.
    * @return
    */
@@ -260,7 +267,8 @@ public class Picture {
     int newG;
     int newB;
 
-    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue, this.format, this.type);
+    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue,
+            this.format, this.type);
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
         for (int a = 0; a < kernel.length; a++) {
