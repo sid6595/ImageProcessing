@@ -269,6 +269,8 @@ public class Picture {
                       * kernel[1][1] + applied.picture[i][j].getB() * kernel[1][2]);
               newB = (int) (applied.picture[i][j].getR() * kernel[2][0] + applied.picture[i][j].getG()
                       * kernel[2][1] + applied.picture[i][j].getB() * kernel[2][2]);
+
+              applied.picture[i][j] = new Pixel(newR, newG, newB);
             }
           }
         }
