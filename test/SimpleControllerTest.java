@@ -43,11 +43,13 @@ public class SimpleControllerTest {
   }
 
   @Test
-  public void testTwoInvalidValue() {
+  public void testLoadScript() {
     init();
     Readable rd = new StringReader("load butterfly.jpg butterfly");
     SimpleController controller = new SimpleController(model, view, rd);
     controller.execute();
-    assertEquals("",model.getPicture("butterfly").toString());
+    assertEquals("jpg",model.getPicture("butterfly").getFormat());
   }
+
+  
 }
