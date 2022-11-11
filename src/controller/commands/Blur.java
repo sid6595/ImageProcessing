@@ -17,6 +17,6 @@ public class Blur implements FunctionObjects {
   @Override
   public void apply(ImageProcessorModel m, String oldName, String newName) {
     Picture oldImage = m.getPicture(oldName);
-    m.addPicture(oldImage.colorTransformation(blur), newName);
+    m.addPicture(oldImage.filter(blur), newName);
   }
 }
