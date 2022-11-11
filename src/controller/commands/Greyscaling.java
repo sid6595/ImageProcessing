@@ -15,6 +15,10 @@ public class Greyscaling implements FunctionObjects {
           {0.2126, 0.7152, 0.0722}
   };
 
+  /**
+   * Apply takes in the supplied image and applies greyscale, then returns the
+   * new image.
+   */
   @Override
   public void apply(ImageProcessorModel m, String oldName, String newName) {
     Picture oldImage = m.getPicture(oldName);

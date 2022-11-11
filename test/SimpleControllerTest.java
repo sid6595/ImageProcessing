@@ -3,7 +3,7 @@ import org.junit.Test;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 
-import controller.ImageController;
+
 import controller.SimpleController;
 import model.ImageProcessorModel;
 import model.ModelImpl;
@@ -12,6 +12,9 @@ import view.TextViewInterface;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * This class is tests the controller and lets parsed inputs get tested.
+ */
 public class SimpleControllerTest {
   ImageProcessorModel model = new ModelImpl();
   Appendable out = new StringBuilder();

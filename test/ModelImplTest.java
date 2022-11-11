@@ -46,14 +46,14 @@ public class ModelImplTest {
     ModelImpl m1 = new ModelImpl();
     m1.loadImage("jpgsample.jpg", "Sample");
 
-
+    assertEquals("jpg", m1.getPicture("Sample").getFormat());
   }
 
-//  @Test
-//  public void testGetExtension() {
-//    ModelImpl m1 = new ModelImpl();
-//    assertEquals("ppm", m1.getExtension("Sample.ppm"));
-//  }
+  //  @Test
+  //  public void testGetExtension() {
+  //    ModelImpl m1 = new ModelImpl();
+  //    assertEquals("ppm", m1.getExtension("Sample.ppm"));
+  //  }
 
   @Test
   public void testBrightenFunc() {

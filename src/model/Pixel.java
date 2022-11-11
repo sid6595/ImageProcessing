@@ -1,6 +1,8 @@
 package model;
 
-import java.awt.*;
+
+
+import java.awt.Color;
 
 import enumpackage.Brightness;
 import enumpackage.Component;
@@ -48,8 +50,11 @@ public class Pixel {
 
   }
 
+  /**
+   * This turns the pixel into an rgb value that can be used by bufferedImage.
+   * @return
+   */
   public int toRGB() {
-//    System.out.println("Red: " + this.r + "; green: " + this.g + "; blue: " + this.b);
     Color color = new Color(this.r, this.g, this.b);
     return color.getRGB();
   }

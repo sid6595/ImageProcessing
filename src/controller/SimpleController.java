@@ -10,6 +10,7 @@ import java.util.function.Function;
 import controller.commands.Blur;
 import controller.commands.Greyscaling;
 import controller.commands.SepiaTone;
+import controller.commands.Sharpen;
 import enumpackage.Brightness;
 import enumpackage.Component;
 import enumpackage.Orientation;
@@ -20,8 +21,6 @@ import controller.commands.Save;
 import controller.commands.VisRGB;
 import controller.commands.VisIntensity;
 import model.ImageProcessorModel;
-import model.ModelImpl;
-import view.ImageTextView;
 import view.TextViewInterface;
 
 /**
@@ -34,7 +33,7 @@ public class SimpleController {
   private final Readable rd;
 
   /**
-   * This creates the constructor with 3 parameters
+   * This creates the constructor with 3 parameters.
    * @param m the model used in the class
    * @param v the view that the user sees
    * @param r where the user inputs are handled
@@ -80,6 +79,7 @@ public class SimpleController {
     knownCommands.put("blur", (Scanner s) -> new Blur());
     knownCommands.put("greyscale", (Scanner s) -> new Greyscaling());
     knownCommands.put("sepia", (Scanner s) -> new SepiaTone());
+    knownCommands.put("sharpen", (Scanner s) -> new Sharpen());
     knownCommands.put("save", (Scanner s) -> new Save());
     knownCommands.put("load", (Scanner s) -> new Load());
 

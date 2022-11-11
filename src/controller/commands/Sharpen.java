@@ -17,6 +17,10 @@ public class Sharpen implements FunctionObjects {
           {-1 / 8, -1 / 8, -1 / 8, -1 / 8, -1 / 8}
   };
 
+  /**
+   * Apply takes in the supplied image and applies sharpen, then returns the
+   * new image.
+   */
   @Override
   public void apply(ImageProcessorModel m, String oldName, String newName) {
     Picture oldImage = m.getPicture(oldName);

@@ -2,25 +2,18 @@ package controller.commands;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-//import java.io.IOException;
-//import java.util.Objects;
 
 import javax.imageio.ImageIO;
 
 import controller.FunctionObjects;
 import model.ImageProcessorModel;
-//import model.ModelImpl;
 
 /**
  * This class will save the image with the name given to it from the
  * path including the name of the file.
  */
 public class Save implements FunctionObjects {
-
-
-  // public Save() {  }
 
 
   /**
@@ -32,17 +25,6 @@ public class Save implements FunctionObjects {
    * @param imageName    This is the name of the image being saved.
    */
   public void apply(ImageProcessorModel m, String saveLocation, String imageName) {
-    FileWriter fw;
-//
-//    String content = m.getPicture(imageName).toPPM();
-//
-//    try {
-//      fw = new FileWriter("res/" + saveLocation);
-//      fw.write(content);
-//      fw.close();
-//    } catch (Exception e) {
-//      throw new IllegalArgumentException("Something occurred when making fileWriter.");
-//    }
 
     try {
       // retrieve image
