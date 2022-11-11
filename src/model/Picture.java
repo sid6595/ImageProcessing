@@ -258,7 +258,12 @@ public class Picture {
           for (int b = 0; b < kernel[0].length; b++) {
             if (i >= applied.height / 2 && i >= applied.width
                     && j >= applied.height && j >= applied.width) {
-
+              newR = (int) (applied.picture[i][j].getR() * kernel[0][0] + applied.picture[i][j].getG()
+                      * kernel[0][1] + applied.picture[i][j].getB() * kernel[0][2]);
+              newG = (int) (applied.picture[i][j].getR() * kernel[1][0] + applied.picture[i][j].getG()
+                      * kernel[1][1] + applied.picture[i][j].getB() * kernel[1][2]);
+              newB = (int) (applied.picture[i][j].getR() * kernel[2][0] + applied.picture[i][j].getG()
+                      * kernel[2][1] + applied.picture[i][j].getB() * kernel[2][2]);
             }
           }
         }
