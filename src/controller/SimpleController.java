@@ -65,7 +65,6 @@ public class SimpleController {
    */
   public void execute() throws IllegalArgumentException {
     Scanner scan = new Scanner(this.rd);
-    ImageProcessorModel m = new ModelImpl();
     Stack<FunctionObjects> commands = new Stack<>();
 
     Map<String, Function<Scanner, FunctionObjects>> knownCommands = new HashMap<>();
@@ -103,7 +102,7 @@ public class SimpleController {
         String input = scan.next();
         String saveName = scan.next();
         commands.add(c);
-        c.apply(m, input, saveName);
+        c.apply(this.model, input, saveName);
       }
     }
   }
