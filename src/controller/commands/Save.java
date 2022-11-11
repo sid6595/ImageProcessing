@@ -2,14 +2,12 @@ package controller.commands;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
 import controller.FunctionObjects;
 import model.ImageProcessorModel;
-//import model.ModelImpl;
 
 /**
  * This class will save the image with the name given to it from the

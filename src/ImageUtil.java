@@ -73,15 +73,6 @@ public class ImageUtil {
    * @param args This is the array being supplied that will be compared.
    */
   public static void main(String[] args) {
-//    String filename;
-//
-//    if (args.length > 0) {
-//      filename = args[0];
-//    } else {
-//      filename = "sample.ppm";
-//    }
-//
-//    ImageUtil.readPPM(filename);
 
     InputStreamReader rd = new InputStreamReader(System.in);
     ModelImpl model = new ModelImpl();
