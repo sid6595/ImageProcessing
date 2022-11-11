@@ -4,6 +4,9 @@ import controller.FunctionObjects;
 import model.ImageProcessorModel;
 import model.Picture;
 
+/**
+ * This holds the kernel to turn an image greyscaled.
+ */
 public class Greyscaling implements FunctionObjects {
 
   double[][] greyScale = {

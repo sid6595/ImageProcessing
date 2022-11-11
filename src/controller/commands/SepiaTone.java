@@ -4,6 +4,9 @@ import controller.FunctionObjects;
 import model.ImageProcessorModel;
 import model.Picture;
 
+/**
+ * This holds the kernel to turn an image into an older looking image.
+ */
 public class SepiaTone implements FunctionObjects {
 
   double[][] sepia = {

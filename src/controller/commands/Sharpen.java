@@ -4,6 +4,9 @@ import controller.FunctionObjects;
 import model.ImageProcessorModel;
 import model.Picture;
 
+/**
+ * This holds the kernel to sharpen an image more into focus.
+ */
 public class Sharpen implements FunctionObjects {
 
   double[][] sharpen = {

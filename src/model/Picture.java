@@ -210,9 +210,9 @@ public class Picture {
   }
 
   /**
-   * This will blur the image it is applied to by applying the kernel to the rgb values
+   * This will change the image it is applied to by applying the kernel to the rgb values
    * of the pixels.
-   *
+   * @param kernel  This is the matrix that will change the image.
    * @return This will return the blurred image.
    */
   public Picture colorTransformation(double[][] kernel) {
@@ -246,6 +246,11 @@ public class Picture {
     return new Picture(applied.picture, this.width, this.height, this.maxValue, this.format, this.type);
   }
 
+  /**
+   * This will filter through the image and change the rgb value on the pixel.
+   * @param kernel  This is the matrix that will change the image.
+   * @return This will return the new picture.
+   */
   public Picture filter(double[][] kernel) {
     int newR;
     int newG;

@@ -3,7 +3,9 @@ package controller.commands;
 import controller.FunctionObjects;
 import model.ImageProcessorModel;
 import model.Picture;
-
+/**
+ * This holds the kernel to blur an image.
+ */
 public class Blur implements FunctionObjects {
 
   double[][] blur = {
