@@ -1,0 +1,46 @@
+Supported Commands
+
+Command: load image_path image_name
+Example: load flowers.ppm flowers
+Condition: path must be before image name
+
+Command: value-component image_name new_name
+Example: value-component flowers flowers-greyscale
+Condition: original image name must be before new image name
+
+Command: brighten image_name new_name
+Examples: brighten 50 flowers flowers-brighter-50
+	  brighten -50 flowers flowers-darken-50
+Condition: original image name must be before new image name
+
+Command: vertical-flip image_name new_name
+Example: vertical-flip flowers flowers-vert-flip
+Condition: original image name must be before new image name
+
+Command: horizontal-flip image_name new_name
+Example: horizontal-flip flowers flowers-hor-flip
+Condition: original image name must be before new image name
+
+Command: greyscale image_name new_name
+Example: greyscale flowers flowers-greyscale
+Condition: original image name must be before new image name
+
+Command: blur image_name new_name
+Example: blur flowers flowers-blur
+Condition: original image name must be before new image name
+
+Command: sepia image_name new_name
+Example: sepia flowers flowers-sepia
+Condition: original image name must be before new image name
+
+Command: sharpen image_name new_name
+Example: sharpen flowers flowers-sharpen
+Condition: original image name must be before new image name
+
+Command: save image_path image_name
+Example: save flowers-greyscale.ppm flowers-greyscale
+Condition: image path must be before image name
+
+Command: quit OR q
+Example: quit
+

@@ -125,6 +125,10 @@ public class Picture {
     return builder.toString();
   }
 
+  /**
+   * This method converts the picture into a bufferedImage.
+   * @return the mentioned bufferredimage.
+   */
   public BufferedImage toBufferedImage()  {
     BufferedImage formal = new BufferedImage(this.width, this.height, this.type);
     for (int i = 0; i < height; i++) {
@@ -210,7 +214,7 @@ public class Picture {
   }
 
   /**
-   * This will blur the image it is applied to by applying the kernel to the rgb values
+   * This will transform the image it is applied to by applying the kernel to the rgb values
    * of the pixels.
    *
    * @return This will return the blurred image.
@@ -246,6 +250,11 @@ public class Picture {
     return new Picture(applied.picture, this.width, this.height, this.maxValue, this.format, this.type);
   }
 
+  /**
+   * This filters the picture with the supplied kernel.
+   * @param kernel a 2d array used to add a filter onto an image.
+   * @return
+   */
   public Picture filter(double[][] kernel) {
     int newR;
     int newG;
