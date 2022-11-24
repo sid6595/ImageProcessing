@@ -71,7 +71,8 @@ public class Picture {
    * @return This method returns an image.
    */
   public Picture visRGB(Component c) {
-    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue, this.format, this.type);
+    Picture applied = new Picture(this.makeCopy(),
+            this.width, this.height, this.maxValue, this.format, this.type);
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
         applied.picture[i][j].greyscaleColor(c);
@@ -88,7 +89,8 @@ public class Picture {
    * @return This method returns an image.
    */
   public Picture visIntensity(Brightness b) {
-    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue, this.format, this.type);
+    Picture applied = new Picture(this.makeCopy(),
+            this.width, this.height, this.maxValue, this.format, this.type);
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
         applied.picture[i][j].greyscaleBrightness(b);
@@ -125,7 +127,7 @@ public class Picture {
     return builder.toString();
   }
 
-  public BufferedImage toBufferedImage()  {
+  public BufferedImage toBufferedImage() {
     BufferedImage formal = new BufferedImage(this.width, this.height, this.type);
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
@@ -142,7 +144,8 @@ public class Picture {
    * @return This method returns a picture after it has been flipped.
    */
   public Picture flip(Orientation o) {
-    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue, this.format, this.type);
+    Picture applied = new Picture(this.makeCopy(),
+            this.width, this.height, this.maxValue, this.format, this.type);
 
     Pixel[][] result = new Pixel[height][width];
     for (int i = 0; i < height; i++) {
@@ -166,7 +169,8 @@ public class Picture {
    * @return This method returns an image that has been brightened.
    */
   public Picture brighten(int increment) {
-    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue, this.format, this.type);
+    Picture applied = new Picture(this.makeCopy(),
+            this.width, this.height, this.maxValue, this.format, this.type);
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
         applied.picture[i][j].brighten(increment, maxValue);
@@ -212,7 +216,8 @@ public class Picture {
   /**
    * This will change the image it is applied to by applying the kernel to the rgb values
    * of the pixels.
-   * @param kernel  This is the matrix that will change the image.
+   *
+   * @param kernel This is the matrix that will change the image.
    * @return This will return the blurred image.
    */
   public Picture colorTransformation(double[][] kernel) {
@@ -228,7 +233,8 @@ public class Picture {
     };
  */
 
-    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue, this.format, this.type);
+    Picture applied = new Picture(this.makeCopy(),
+            this.width, this.height, this.maxValue, this.format, this.type);
     for (int i = 0; i < applied.height; i++) {
       for (int j = 0; j < applied.width; j++) {
         //this grabs the individual picture pixel
@@ -243,12 +249,14 @@ public class Picture {
       }
     }
 
-    return new Picture(applied.picture, this.width, this.height, this.maxValue, this.format, this.type);
+    return new Picture(applied.picture,
+            this.width, this.height, this.maxValue, this.format, this.type);
   }
 
   /**
    * This will filter through the image and change the rgb value on the pixel.
-   * @param kernel  This is the matrix that will change the image.
+   *
+   * @param kernel This is the matrix that will change the image.
    * @return This will return the new picture.
    */
   public Picture filter(double[][] kernel) {
@@ -256,26 +264,31 @@ public class Picture {
     int newG;
     int newB;
 
-    Picture applied = new Picture(this.makeCopy(), this.width, this.height, this.maxValue, this.format, this.type);
+    Picture applied = new Picture(this.makeCopy(),
+            this.width, this.height, this.maxValue, this.format, this.type);
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
-        for (int a = 0; a < kernel.length; a++) {
-          for (int b = 0; b < kernel[0].length; b++) {
-            if (i >= applied.height / 2 && i >= applied.width
-                    && j >= applied.height && j >= applied.width) {
-              newR = (int) (applied.picture[i][j].getR() * kernel[a][b] +
-                      applied.picture[i][j].getG() * kernel[a][b + 1] +
-                      applied.picture[i][j].getB() * kernel[a][b + 2]);
-              newG = (int) (applied.picture[i][j].getR() * kernel[a + 1][b] +
-                      applied.picture[i][j].getG() * kernel[a + 1][b + 1] +
-                      applied.picture[i][j].getB() * kernel[a + 1][b + 2]);
-              newB = (int) (applied.picture[i][j].getR() * kernel[a + 2][b] +
-                      applied.picture[i][j].getG() * kernel[a + 2][b + 1] +
-                      applied.picture[i][j].getB() * kernel[a + 2][b + 2]);
+        if (applied.picture[i][j] != null) {
+          for (int a = 0; a < kernel.length; a++) {
+            for (int b = 0; b < kernel[0].length; b++) {
+              if (i >= applied.height / 2 && i >= applied.width
+                      && j >= applied.height && j >= applied.width) {
+                newR = (int) (applied.picture[i][j].getR() * kernel[a][b] +
+                        applied.picture[i][j].getG() * kernel[a][b + 1] +
+                        applied.picture[i][j].getB() * kernel[a][b + 2]);
+                newG = (int) (applied.picture[i][j].getR() * kernel[a + 1][b] +
+                        applied.picture[i][j].getG() * kernel[a + 1][b + 1] +
+                        applied.picture[i][j].getB() * kernel[a + 1][b + 2]);
+                newB = (int) (applied.picture[i][j].getR() * kernel[a + 2][b] +
+                        applied.picture[i][j].getG() * kernel[a + 2][b + 1] +
+                        applied.picture[i][j].getB() * kernel[a + 2][b + 2]);
 
-              applied.picture[i][j] = new Pixel(newR, newG, newB);
+                applied.picture[i][j] = new Pixel(newR, newG, newB);
+              }
             }
           }
+        } else {
+          applied.picture[i][j] = null;
         }
       }
     }

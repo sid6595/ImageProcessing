@@ -226,4 +226,37 @@ public class PictureTest {
     assertNotEquals(expectedPic, p1);
   }
 
+  @Test
+  public void testBlur() {
+    init();
+    double[][] blur = {
+            {1 / 16, 1 / 8, 1 / 16},
+            {1 / 8, 1 / 4, 1 / 8},
+            {1 / 16, 1 / 8, 1 / 16}
+    };
+
+    Pixel expectedTopLeft = new Pixel(255/4, (255/8)+(9/8), 9/16);
+    Pixel expectedTopRight = new Pixel(255/8, (255/4) + (9/16), 9/8);
+    Pixel expectedMiddleLeft = new Pixel(255/8, (255/16)+(9/4), 9/8 + 255/8);
+    Pixel expectedMiddleRight = new Pixel(255/16, 255/8 + 9/8, 9/4 + 255/16);
+    Pixel expectedBottomLeft = new Pixel(0, 9/8, 255/4 + 9/16);
+    Pixel expectedBottomRight = new Pixel(0, 9/16, 9/8 + 255/8);
+
+    Pixel[][] expectedPixelArray = new Pixel[3][2];
+    expectedPixelArray[0][0] = expectedTopLeft;
+    expectedPixelArray[0][1] = expectedTopRight;
+    expectedPixelArray[1][0] = expectedMiddleLeft;
+    expectedPixelArray[1][1] = expectedMiddleRight;
+    expectedPixelArray[2][0] = expectedBottomLeft;
+    expectedPixelArray[2][1] = expectedBottomRight;
+
+    Picture expectedPic = new Picture(expectedPixelArray, 2, 3, 255,
+            "ppm", BufferedImage.TYPE_INT_ARGB);
+
+    assertEquals(expectedPic, p1.filter(blur));
+    assertNotEquals(expectedPic, p1);
+
+  }
+
+
 }
